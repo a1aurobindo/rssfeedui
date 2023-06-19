@@ -1,0 +1,97 @@
+<!--<div>-->
+<!--  <mat-toolbar>-->
+<!--    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+<!--      <mat-icon>menu</mat-icon>-->
+<!--    </button>-->
+<!--    <span>My App</span>-->
+<!--    <span class="example-spacer"></span>-->
+<!--    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
+<!--      <mat-icon>favorite</mat-icon>-->
+<!--    </button>-->
+<!--    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">-->
+<!--      <mat-icon>share</mat-icon>-->
+<!--    </button>-->
+<!--  </mat-toolbar>-->
+<!--</div>-->
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container">
+    <!-- Navbar brand -->
+    <a class="navbar-brand me-2" >
+      <img
+        src="assets/rss.svg"
+        height="20"
+        alt=""
+        loading="lazy"
+        style="margin-top: -1px;"
+      />
+    </a>
+
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div
+      class="collapse navbar-collapse"
+      id="navbarButtonsExample"
+      mdbCollapse
+    >
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="navbar-brand me-2" (click)="refreshFeed()">
+            <img
+              src="assets/loop2.svg"
+              height="16"
+              alt=""
+              loading="lazy"
+              style="margin-top: -1px;"
+            />
+          </a>
+        </li>
+
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Business</button>
+          <button mat-menu-item>Science</button>
+          <button mat-menu-item>Sports</button>
+          <button mat-menu-item>Entertainment</button>
+        </mat-menu>
+      </ul>
+      <!-- Left links -->
+
+      <div class="d-flex align-items-center">
+        <button type="button" class="btn btn-link px-3 me-2">
+          Login
+        </button>
+        <button type="button" class="btn btn-danger me-3" (click)="logout()">
+          Sign Out
+        </button>
+        <a
+          class="btn btn-dark px-3 btn-danger"
+          (click)="logout()"
+          role="button">
+          <img
+          src="assets/switch.svg"
+          height="16"
+          alt=""
+          loading="lazy"
+          style="margin-top: -1px;"
+        /></a>
+      </div>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
