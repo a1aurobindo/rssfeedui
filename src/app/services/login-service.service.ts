@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable, throwError} from "rxjs";
-import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +7,7 @@ import {catchError} from "rxjs/operators";
 export class LoginServiceService {
 
   public clientId = '6bv2uba3mci73jd571i253lqfv';
-  public redirectUri = 'http://localhost:4200/login/oauth2/code/cognito';
+  public redirectUri = 'http://localhost:80/login/oauth2/code/cognito';
   private Cookie: any;
 
   constructor(private _http: HttpClient) { }

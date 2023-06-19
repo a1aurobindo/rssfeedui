@@ -9,6 +9,7 @@ import {PageEvent} from "@angular/material/paginator";
 export class PaginatorComponent implements OnInit {
 
   @Input() pageSizeOption: number = 20;
+  @Input() pageNumber: number = 0;
   @Input() pageSize: number = 1;
   @Input() pageLength: number = 1;
   @Output() pageChanged: EventEmitter<number> = new EventEmitter<number>();

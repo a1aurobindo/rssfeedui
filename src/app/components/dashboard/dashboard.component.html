@@ -1,1 +1,9 @@
-<p>dashboard works!</p>
+<ng-container>
+  <ng-container>
+    <app-header (loggedOut)= "onLogout()" (refreshed)="refreshFeed()"></app-header>
+  </ng-container>
+  <ng-container >
+    <app-news-list class="w-100"></app-news-list>
+  </ng-container>
+</ng-container>
+

@@ -15,16 +15,17 @@ export class NewsTableDatasource extends DataSource<News> {
     return this._newsList.value;
   }
 
-  get noUsersFound(): boolean {
+  get noNewsFound(): boolean {
     return !this.news || this.news.length === 0;
   }
 
-  get paginationData(): any {
+  get paginationData(): { totalItems: number, itemsPerPage: number, currentPage: number, totalPages: number, pageSize: number } {
     return {
       totalItems: this.newsData ? this.newsData.totalElements : 0,
       itemsPerPage: this.newsData ? this.newsData.numberOfElements : 0,
       currentPage: this.newsData ? this.newsData.number : 0,
-      totalPages: this.newsData ? this.newsData.totalPages : 0
+      totalPages: this.newsData ? this.newsData.totalPages : 0,
+      pageSize: this.newsData ? this.newsData.size : 0
     };
   }
 
@@ -36,9 +37,10 @@ export class NewsTableDatasource extends DataSource<News> {
     this._newsList.complete();
   }
 
-  loadUsersData(newsData?: NewsSearchResponse): void {
+  loadNewsData(newsData?: NewsSearchResponse): void {
     this.newsData = newsData;
     if (this.newsData) {
+      // @ts-ignore
       this._newsList.next(newsData.content);
     } else {
       this._newsList.next([]);
@@ -49,17 +51,8 @@ export class NewsTableDatasource extends DataSource<News> {
   trackBy(_index: number, news: News): string {
     return news.newsId;
   }
-  /**
-   *
-   * @param updatedUser
-   * @param userId
-   */
-  updateUser(news: News, newsId): void {
-    const userList: News[] = this._newsList.value;
-    const userIndex = userList.findIndex((user , i ) => news.newsId === newsId);
-    userList[userIndex] = news;
-    this.newsData.content = userList;
-    this.loadUsersData(this.newsData);
 
+  clear(): void {
+    this._newsList.next([]);
   }
 }
